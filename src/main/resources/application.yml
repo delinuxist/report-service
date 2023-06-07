@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: report-service
+  config:
+    import: optional:configserver:http://localhost:8081
+
+  datasource:
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/report_service
+    password: postgres
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: 'true'
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+
+  # rabbitMq config
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+# queue names
+rabbitMq:
+  queue:
+    user-queue: user_queue
+  exchange:
+    user-exchange: user_exchange
+
+#server:
+#  port: 9091
+
